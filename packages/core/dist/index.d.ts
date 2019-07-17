@@ -1,0 +1,1 @@
+export { strip } from './strip';
