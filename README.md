@@ -77,7 +77,8 @@ const transformed = transform(pretendResult)
 
 ### TODO
 - Finish core API for directives applied to objects and lists.
+- Setup/test decorators args coming in as variables.
 - Finish core API for mutation Inputs.
 - POC implementation of [convert-units](https://github.com/ben-ng/convert-units) directive.
 - Create Apollo-client link to allow for auto applying transformations and investigate caching data and using cache to return transform(data) when only directive args have changed.
-- Implement other libs as decorators thoughts? ( moment, date-fns, ramda, ...)
+- Implement other libs as decorators.
