@@ -6,8 +6,7 @@ const directives = {
     add1: ({}) => R.add(1),
     toUpper: ({}) => R.toUpper,
     add: ({ value }) => R.add(value),
-    convert: ({ from, to }: { from: string, to: string }) => (value: number): number =>  {
-
+    convert: ({ from, to }: { from: string, to: string }) => (value: number): number => {
         const fromMap = {
             FT: R.multiply(.3048),
             METERS: R.identity
@@ -42,7 +41,7 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives, test)
+            const transformer = dataTransform(directives)(test)
             
             expect(transformer({
                 data: {
@@ -68,7 +67,7 @@ describe('./transform', () => {
                 argTest @add(value: 2)
             }`)
 
-            const transformer = dataTransform(directives, test)
+            const transformer = dataTransform(directives)(test)
 
             expect(transformer({
                 data: {
@@ -86,7 +85,7 @@ describe('./transform', () => {
                 multipleArgsTest @convert(from: "FT", to: "METERS")
             }`)
 
-            const transformer = dataTransform(directives, test)
+            const transformer = dataTransform(directives)(test)
 
             expect(transformer({
                 data:  {
@@ -103,7 +102,7 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives, test)
+            const transformer = dataTransform(directives)(test)
 
             expect(transformer({
                 data: { 
@@ -130,7 +129,7 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives, test)
+            const transformer = dataTransform(directives)(test)
 
             expect(transformer({
                 data: {
@@ -154,7 +153,7 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives, test)
+            const transformer = dataTransform(directives)(test)
 
             expect(transformer({
                 data: {
@@ -178,7 +177,7 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives, test)
+            const transformer = dataTransform(directives)(test)
 
             expect(transformer({
                 data: {
@@ -199,6 +198,37 @@ describe('./transform', () => {
                 }
             })
         })
+        it('should handle variables in query', () => {
+            const test = parse(`
+                query VariablesTest($from: String!, $to: String!, $value: Int!) {
+                    variablesTest {
+                        distance @convert(from: $from, to: $to)
+                        foo @add(value: $value)
+                    }
+                }`)
 
+            const variables = {
+                from: 'FT',
+                to: 'METERS',
+                value: 5
+            }
+            const transformer = dataTransform(directives)(test, variables)
+
+            expect(transformer({
+                data: {
+                    variablesTest: {
+                        distance: 10,
+                        foo: 5
+                    }
+                }
+            })).toEqual({
+                data: {
+                    variablesTest: {
+                        distance: 3.048,
+                        foo: 10
+                    }
+                }
+            })
+        })
     })
 })

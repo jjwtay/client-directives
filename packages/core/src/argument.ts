@@ -56,6 +56,7 @@ export const convertArgument: (arg: ValueNode) => object = R.cond([
 
 export const visit = {
     leave: (node: ArgumentNode) => {
+        console.log('argument visit', node)
         return {
             [node.name.value]: convertArgument(node.value)
         }

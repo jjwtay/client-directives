@@ -3,14 +3,18 @@ import {
     visit,
     DocumentNode,
     OperationDefinitionNode,
-    DirectiveNode
+    DirectiveNode,
+    VariableNode
 } from 'graphql'
 import * as R from 'ramda'
 import { visit as visitField } from './field'
 import { visit as visitArgument } from './argument'
 import { visit as visitDirective } from './directive'
+import { visit as visitVariable } from  './variable'
+import * as consts from './consts'
 
-export const dataTransform = (directives: Record<string, any>, astNode: DocumentNode): any => visit(astNode, {
+
+export const dataTransform = (directives: Record<string, any>) => (astNode: DocumentNode, variables?: any): any => visit(astNode, {
     [Kind.DIRECTIVE]: visitDirective(directives),
     [Kind.ARGUMENT]: visitArgument,
     [Kind.FIELD]: visitField,
@@ -26,5 +30,6 @@ export const dataTransform = (directives: Record<string, any>, astNode: Document
                 data: R.mergeAll(node.definitions)
             })
         }
-    }
+    },
+    [Kind.VARIABLE]: visitVariable(variables)
 })

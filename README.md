@@ -21,9 +21,22 @@ const directives = {
     convert
 }
 
-const { graphql, transform } = convertDirective(directives, exampleQuery)
+const { graphql, transform } = convertDirective(directives)(exampleQuery)
 
 someGraphQLClientFetcher(graphql).then(data => transform(data))
+```
+
+### Usage with Variables
+
+```
+// see above
+const variables = {
+    from: 'FT',
+    to: 'M'
+}
+
+const { graphql, transform } = convertDirective(directives)(exampleQuery, variables)
+
 ```
 
 ### Example Create Client Directive
@@ -47,7 +60,7 @@ const directives = {
     add
 }
 
-const { query, transform } = convertDirective(directives, exampleQuery)
+const { query, transform } = convertDirective(directives)(exampleQuery)
 
 /* Now assuming used stripped query returns */
 const pretendResult = {
@@ -77,8 +90,8 @@ const transformed = transform(pretendResult)
 
 ### TODO
 - ~~Finish core API for directives applied to objects and lists.~~ (7/17/2019)
-- Setup/test decorators args coming in as variables. (in progress)
-- Finish core API for mutation Inputs.
+- ~~Setup/test decorators args coming in as variables.~~ (7/17/2019)
+- Finish core API for mutation Inputs. (In Progress)
 - POC implementation of [convert-units](https://github.com/ben-ng/convert-units) directive.
 - Create Apollo-client link to allow for auto applying transformations and investigate caching data and using cache to return transform(data) when only directive args have changed.
 - Implement other libs as decorators.
