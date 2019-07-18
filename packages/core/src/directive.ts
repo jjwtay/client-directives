@@ -1,11 +1,17 @@
-import { Kind, visit, DocumentNode } from 'graphql/language'
+import { DirectiveNode } from 'graphql/language'
+import * as R from 'ramda'
 
-export const data = (directives: Record<string, any>, astNode: DocumentNode) => visit(astNode, {
-    [Kind.DIRECTIVE]: node => {
-        if (node.name.value === 'add1') {
-            return (val: number) => val + 1
-        }
+export interface LeaveDirective {
 
-        return (val: any) => val
+}
+
+export const visit = (directives: Record<string, any>) => ({
+    leave: (node: DirectiveNode) => {
+        const args = R.mergeAll(node.arguments || [])
+        const directive = directives[node.name.value]
+
+        if (!directive) return null
+
+        return directive(args)
     }
 })

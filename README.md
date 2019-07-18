@@ -76,8 +76,8 @@ const transformed = transform(pretendResult)
 ```
 
 ### TODO
-- Finish core API for directives applied to objects and lists.
-- Setup/test decorators args coming in as variables.
+- ~~Finish core API for directives applied to objects and lists.~~ (7/17/2019)
+- Setup/test decorators args coming in as variables. (in progress)
 - Finish core API for mutation Inputs.
 - POC implementation of [convert-units](https://github.com/ben-ng/convert-units) directive.
 - Create Apollo-client link to allow for auto applying transformations and investigate caching data and using cache to return transform(data) when only directive args have changed.
