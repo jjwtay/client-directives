@@ -1,6 +1,6 @@
 {
   "name": "client-directives",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GraphQL clientside directives for transforming data.",
   "main": "index.js",
   "scripts": {

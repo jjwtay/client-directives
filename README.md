@@ -9,6 +9,9 @@ Easily create client only graphql directives to automatically transform GraphQL 
     npm install @client-directives/core
 ```
 
+### Implementations
+<li>@client-directives/convert-units</li>
+
 ### API
 ```
 type clientDirectives = (directives: Record<string, Function>) =>
@@ -92,8 +95,8 @@ The query returned has stripped out variables and directives the server cannot h
 - ~~Finish core API for directives applied to objects and lists.~~ (7/17/2019)
 - ~~Setup/test decorators args coming in as variables.~~ (7/17/2019)
 - ~~Finish core API for mutation Inputs.~~ (8/4/2019)
-- Publish alph to npm.
-- POC implementation of [convert-units](https://github.com/ben-ng/convert-units) directive.
+- ~~Publish alph to npm.~~ (8/4/2019)
+- ~~POC implementation of [convert-units](https://github.com/ben-ng/convert-units) directive.~~ (8/4/2019)
 - Handle aliasing.
 - Create Apollo-client link to allow for auto applying transformations and investigate caching data and using cache to return transform(data) when only directive args have changed.
 - Implement other libs as decorators.

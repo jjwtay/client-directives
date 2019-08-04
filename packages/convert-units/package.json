@@ -1,7 +1,7 @@
 {
-  "name": "@client-directives/core",
-  "version": "1.0.1",
-  "description": "GraphQL client only directives for transforming inputs and result data.",
+  "name": "@client-directives/convert-units",
+  "version": "1.0.0",
+  "description": "GraphQL Client-Directives  for unit conversions.",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --coverage",
@@ -10,21 +10,19 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "ramda": "^0.26.1"
-  },
   "devDependencies": {
+    "@client-directives/core": "^1.0.1",
     "@types/glob": "^7.1.1",
-    "@types/graphql": "^14.2.2",
-    "@types/jest": "^24.0.15",
-    "@types/node": "^12.6.3",
-    "@types/ramda": "^0.26.15",
-    "@typescript-eslint/eslint-plugin": "^1.12.0",
-    "@typescript-eslint/parser": "^1.12.0",
-    "eslint": "^6.0.1",
+    "@types/graphql": "^14.2.3",
+    "@types/jest": "^24.0.16",
+    "@types/node": "^12.6.9",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "convert-units": "^2.3.4",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
     "esm": "^3.2.25",
     "graphql": "^14.4.2",
@@ -34,6 +32,7 @@
     "typescript": "^3.5.3"
   },
   "peerDependencies": {
-    "graphql": "^14.4.2"
+    "@client-directives/core": "^1.0.1",
+    "convert-units": "^2.3.4"
   }
 }
