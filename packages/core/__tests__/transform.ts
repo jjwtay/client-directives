@@ -1,5 +1,6 @@
 import { parse } from 'graphql/language'
-import { dataTransform } from '../src/transform'
+import { dataTransform, variablesTransform } from '../src/transform'
+import { clientDirectives } from '../src'
 import * as R from 'ramda'
 
 const directives = {
@@ -41,9 +42,9 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives)(test)
+            const { dataTransformer} = clientDirectives(directives)(test)
             
-            expect(transformer({
+            expect(dataTransformer({
                 data: {
                     getFoo: {
                         foo: 2,
@@ -67,9 +68,9 @@ describe('./transform', () => {
                 argTest @add(value: 2)
             }`)
 
-            const transformer = dataTransform(directives)(test)
+            const { dataTransformer } = clientDirectives(directives)(test)
 
-            expect(transformer({
+            expect(dataTransformer({
                 data: {
                     argTest: 5
                 }
@@ -85,9 +86,9 @@ describe('./transform', () => {
                 multipleArgsTest @convert(from: "FT", to: "METERS")
             }`)
 
-            const transformer = dataTransform(directives)(test)
+            const { dataTransformer } = clientDirectives(directives)(test)
 
-            expect(transformer({
+            expect(dataTransformer({
                 data:  {
                     multipleArgsTest: 3
                 }
@@ -102,9 +103,9 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives)(test)
+            const { dataTransformer } = clientDirectives(directives)(test)
 
-            expect(transformer({
+            expect(dataTransformer({
                 data: { 
                     pipeTest: {
                         divSub: 3,
@@ -129,9 +130,9 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives)(test)
+            const { dataTransformer } = clientDirectives(directives)(test)
 
-            expect(transformer({
+            expect(dataTransformer({
                 data: {
                     objectTest: {
                         name: 'joe smith',
@@ -153,9 +154,9 @@ describe('./transform', () => {
                 }
             }`)
 
-            const transformer = dataTransform(directives)(test)
+            const { dataTransformer } = clientDirectives(directives)(test)
 
-            expect(transformer({
+            expect(dataTransformer({
                 data: {
                     objectTest: {
                         name: 'joe smith',
@@ -212,9 +213,9 @@ describe('./transform', () => {
                 to: 'METERS',
                 value: 5
             }
-            const transformer = dataTransform(directives)(test, variables)
+            const { dataTransformer } = clientDirectives(directives)(test, variables)
 
-            expect(transformer({
+            expect(dataTransformer({
                 data: {
                     variablesTest: {
                         distance: 10,
@@ -229,6 +230,49 @@ describe('./transform', () => {
                     }
                 }
             })
+        })
+        it('should handle input directives', () => {
+
+            const test = parse(`
+            mutation UpdateCar(
+                $odometer: Float!,
+                $speedometer: Float!,
+                $from: String!,
+                $to: String!
+            ) @VariablesTransform(
+                odometer: [ "convert", { from: $to, to: $from } ]
+            ) {
+                updateCar(
+                    odometer: $odometer,
+                    speedometer: $speedometer
+                ) {
+                    odometer @convert(from: $from, to: $to)
+                    speedometer
+                }
+            }
+            `)
+
+            const variables = {
+                from: 'METERS',
+                to: 'FT',
+                odometer: 10,
+                speedometer: 65
+            }
+
+            const { variablesTransformer, dataTransformer } = clientDirectives(directives)(test, variables)
+            expect(variablesTransformer(variables)).toEqual({
+                odometer: 3.048,
+                speedometer: 65
+            })
+
+            expect(dataTransformer({
+                data: {
+                    updateCar: {
+                        odometer: 3.048,
+                        speedometer: 65
+                    }
+                }
+            }).data.updateCar.odometer).toBeCloseTo(10)
         })
     })
 })
