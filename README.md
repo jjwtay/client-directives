@@ -97,6 +97,8 @@ The query returned has stripped out variables and directives the server cannot h
 - ~~Finish core API for mutation Inputs.~~ (8/4/2019)
 - ~~Publish alph to npm.~~ (8/4/2019)
 - ~~POC implementation of [convert-units](https://github.com/ben-ng/convert-units) directive.~~ (8/4/2019)
+- ~~Ramda directives  first pass~~ (8/8/2019)
 - Handle aliasing.
 - Create Apollo-client link to allow for auto applying transformations and investigate caching data and using cache to return transform(data) when only directive args have changed.
+- Create better docs.
 - Implement other libs as decorators.
