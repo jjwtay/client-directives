@@ -11,7 +11,6 @@ export const clientDirectives = (directives: Record<string, any>) => (astNode: D
     const query = strip(directives)(astNode)
     const dataTransformer = dataTransform(directives)(astNode, variables)
     const variablesTransformer = variablesTransform(directives)(astNode, variables)
-    console.log(variablesTransformer)
     
     return {
         query,

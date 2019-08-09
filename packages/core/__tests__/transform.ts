@@ -274,5 +274,29 @@ describe('./transform', () => {
                 }
             }).data.updateCar.odometer).toBeCloseTo(10)
         })
+
+        it('should handle aliasing', () => {
+            const test = parse(`{
+                getFoo {
+                    blabla: foo @toUpper
+                }
+            }`)
+
+            const { dataTransformer } = clientDirectives(directives)(test)
+
+            expect(dataTransformer({
+                data: {
+                    getFoo: {
+                        blabla: 'hello'
+                    }
+                }
+            })).toEqual({
+                data: {
+                    getFoo: {
+                        blabla: 'HELLO'
+                    }
+                }
+            })
+        })
     })
 })

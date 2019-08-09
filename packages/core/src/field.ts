@@ -58,7 +58,6 @@ const traverseFieldSimple = (node: LeaveFieldBase) => {
 
 export const visit = {
     leave: (node: FieldNode) => {
-
         if (node.selectionSet) {
             return {
                 [node.name.value]: (data: any) => {
@@ -71,5 +70,12 @@ export const visit = {
             }
         }
         return traverseFieldSimple(node as LeaveFieldBase)
+    },
+    enter: (node: FieldNode) => {
+
+        if (node.alias) {
+            return R.assocPath(['name', 'value'], node.alias.value, node)
+        }
+        return node
     }
 }
