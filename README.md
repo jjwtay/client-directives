@@ -10,8 +10,8 @@ Easily create client only graphql directives to automatically transform GraphQL 
 ```
 
 ### Implementations
-<li>[@client-directives/convert-units](https://github.com/jjwtay/client-directives/tree/master/packages/convert-units)</li>
-<li>[@client-directives/ramda](https://github.com/jjwtay/client-directives/tree/master/packages/ramda)(WIP)</li>
+<li>[convert-units](https://github.com/jjwtay/client-directives/tree/master/packages/convert-units)</li>
+<li>[ramda](https://github.com/jjwtay/client-directives/tree/master/packages/ramda) WIP</li>
 
 ### API
 ```
