@@ -61,4 +61,5 @@ typings/
 .next
 
 packages/core/dist
-packages/core/convert-units/dist
+packages/convert-units/dist
+packages/ramda/dist
