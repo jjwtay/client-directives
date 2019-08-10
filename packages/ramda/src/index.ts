@@ -49,6 +49,49 @@ export const mathMod = ({ value }: { value: number }) => R.mathMod(R.__, value)
 export const max = ({ value }: { value: number }) => R.max(value)
 export const mean = () => R.mean
 export const median = () => R.median
+export const min = ({ value }: { value: number }) => R.min(value)
+export const move = ({ from, to }: { from: number, to: number }) => R.move(from, to)
+export const multiply = ({ value }: { value: number }) => R.multiply(value)
+export const negate = () => R.negate
+export const not = () => R.not
+export const nth = ({ value }: { value: number }) => R.nth(value)
+export const omit = ({ value }: { value: string[] }) => R.omit(value)
+//@ts-ignore
+export const pair = ({ value }: { value: any }) => R.pair(value)
+export const path = ({ value }: { value: string[] }) => R.path(value)
+export const pathOr = ({ path, value }: { path: string[], value: any }) => R.pathOr(value, path)
+export const pick = ({ value }: { value: any[] }) => R.pick(value)
+export const prepend = ({ value }: { value: any }) => R.prepend(value)
+export const product = () => R.product
+export const project = ({ value }: { value: string[] }) => R.project(value)
+export const prop = ({ value }: { value: string }) => R.prop(value)
+export const propOr = ({ value, or }: { value: string, or: any }) => R.propOr(or, value)
+export const props = ({ value }: { value: string[] }) => R.props(value)
+export const range = ({ value }: { value: number }) => R.range(value)
+export const remove = ({ start, count }: { start: number, count: number }) => R.remove(start, count)
+export const repeat = ({ value }: { value: any }) => R.repeat(value)
+export const reverse = () => R.reverse
+export const slice = ({ from, to }: { from: number, to: number }) => R.slice(from, to)
+export const split = ({ value }: { value: string }) => R.split(value)
+export const splitAt = ({ value }: { value : number }) => R.splitAt(value)
+export const splitEvery = ({ value }: { value: number }) => R.splitEvery(value)
+export const startsWith = ({ value }: { value: string }) => R.startsWith(value)
+export const subtract = ({ value }: { value: number }) => R.subtract(R.__, value)
+export const sum = () => R.sum
+export const T = () => R.T
+export const tail = () => R.tail
+export const take = ({ value }: { value: number }) => R.take(value)
+export const takeLast = ({ value }: { value: number }) => R.takeLast(value)
+export const toLower = () => R.toLower
+export const toPairs = () => R.toPairs
+export const toString = () => R.toString
+export const toUpper = () => R.toUpper
+export const trim = () => R.trim
+export const type = () => R.type
+export const uniq = () => R.uniq
+export const update = ({ at, value }: { at: number, value: any }) => R.update(at, value)
+export const values = () => R.values
+export const without = ({ value }: { value: any[] }) => R.without(value)
 
 /*
 export interface RamdaProps {

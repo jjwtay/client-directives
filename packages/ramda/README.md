@@ -13,8 +13,6 @@ Subset of Ramda for use in graphql.
     npm i @client-directives/ramda
 ```
 
-
-
 ### Supported functions:
 For the most part most ramda functions of the form (a) => (b) => c have been converted
 to the form @function(value: a) which will then receive (b) the field value returned then
@@ -75,53 +73,53 @@ appropriate naming conventions.
 | max | @max(value: 10) | &#x2714; |
 | mean | @mean | &#x2714; |
 | median | @median | &#x2714; |
-| min | @min(value: 5) | |
+| min | @min(value: 5) | &#x2714; |
 | modulo | @modulo(value: 7) | |
-| move | @move(from: 2, to: 5) | |
-| multiply | @multiply(value: 2) | |
-| negate | @negate | |
-| not | @not | |
-| nth | @nth(value: 4) | |
-| omit | @omit(value: ["a", "foo"]) | |
-| pair | @pair(value: "first") | |
-| path | @path(value: ["a", "b", "c"]) | |
-| pathOr | @pathOr(or: "foo", ["a", "b", "c"]) | |
-| pick | @pick(value: ["foo", "bar"]) | |
+| move | @move(from: 2, to: 5) | &#x2714; |
+| multiply | @multiply(value: 2) | &#x2714; |
+| negate | @negate | &#x2714; |
+| not | @not | &#x2714; |
+| nth | @nth(value: 4) | &#x2714; |
+| omit | @omit(value: ["a", "foo"]) | &#x2714; |
+| pair | @pair(value: "first") | &#x2714; |
+| path | @path(value: ["a", "b", "c"]) | &#x2714; |
+| pathOr | @pathOr(or: "foo", ["a", "b", "c"]) | &#x2714; |
+| pick | @pick(value: ["foo", "bar"]) | &#x2714; |
 | pickAll | @pickAll(value: ["foo", "bar"]) | |
-| prepend | @prepend(value: "foo") | |
-| product | @product | |
-| project | @project(value: ["first", "last"]) | |
-| prop | @prop(value: "foo") | |
-| propOr | @propOr(or: "foo", value: "bar") | |
-| props | @props(value: ["first", "last" ]) | |
-| range | @range(value: 5) | |
-| remove | @remove(start: 1, count: 3) | |
-| repeat | @repeat(value: "hi") | |
-| reverse | @reverse | |
-| slice | @slice(from: 2, to: 5) | |
-| split | @slice(value: "/") | |
-| splitAt | @splitAt(value: 3) | |
-| splitEvery | @splitEvery(value: 3) | |
-| startsWith | @startsWith(value: "a") | |
-| subtract | @subtract(value: 2) | |
-| sum | @sum | |
+| prepend | @prepend(value: "foo") | &#x2714; |
+| product | @product | &#x2714; |
+| project | @project(value: ["first", "last"]) | &#x2714; |
+| prop | @prop(value: "foo") | &#x2714; |
+| propOr | @propOr(or: "foo", value: "bar") | &#x2714; |
+| props | @props(value: ["first", "last"]) | &#x2714; |
+| range | @range(value: 5) | &#x2714; |
+| remove | @remove(start: 1, count: 3) | &#x2714; |
+| repeat | @repeat(value: "hi") | &#x2714; |
+| reverse | @reverse | &#x2714; |
+| slice | @slice(from: 2, to: 5) | &#x2714; |
+| split | @slice(value: "/") | &#x2714; |
+| splitAt | @splitAt(value: 3) | &#x2714; |
+| splitEvery | @splitEvery(value: 3) | &#x2714; |
+| startsWith | @startsWith(value: "a") | &#x2714; |
+| subtract | @subtract(value: 2) | &#x2714; |
+| sum | @sum | &#x2714; |
 | symmetricDifference | @symmetricDifference(value: [1, 3, 4]) | |
-| T | @T | |
-| tail | @tail | |
-| take | @take(value: 2) | |
-| takeLast | @takeLast(value: 5) | |
-| toLower | @toLower | |
-| toPairs | @toPairs | |
-| toString | @toString | |
-| toUpper | @toUpper | |
-| trim | @trim | |
-| type | @type | |
+| T | @T | &#x2714; |
+| tail | @tail | &#x2714; |
+| take | @take(value: 2) | &#x2714; |
+| takeLast | @takeLast(value: 5) | &#x2714; |
+| toLower | @toLower | &#x2714; |
+| toPairs | @toPairs | &#x2714; |
+| toString | @toString | &#x2714; |
+| toUpper | @toUpper | &#x2714; |
+| trim | @trim | &#x2714; |
+| type | @type | &#x2714; |
 | union | @union(value: [1, 3, 4]) | |
-| uniq | @uniq | |
-| update | @uniq(at: 2, value: "foo") | |
-| values | @values | |
+| uniq | @uniq | &#x2714; |
+| update | @update(at: 2, value: "foo") | &#x2714; |
+| values | @values | &#x2714; |
 | whereEq | @whereEq(value: { foo: "bar" }) | |
-| without | @without(value: [1, 2]) | |
+| without | @without(value: [1, 2]) | &#x2714; |
 | xprod | @xprod(value: [1, 3]) | |
 | zip | @zip(value: ["a", "b", "c"]) | |
 | zipObj | @zip(value: ["a", "b", "c" ]) | |
@@ -142,3 +140,4 @@ TODO:
 * Finish implementation for  all outlined functions
 * Implement functions that take a callback (map, filter,...) as (fn) => ({ props }) => value => ramdaFn(fn, ...props, value) so they can be initialized.
 * Implement common patterns for functions that take a  callback as "extra" functions.
+* Revisit API and signatures for 2nd release after use.
